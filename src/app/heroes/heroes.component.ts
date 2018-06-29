@@ -2,13 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HEROES } from '../mock-heroes';
 
+/* 修饰器，用于指定该组件的元数据 */
 @Component({
-  selector: 'app-heroes',
-  templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css']
+  selector: 'app-heroes', /* 组件的选择器(CSS元素选择器) */
+  templateUrl: './heroes.component.html', /* 组件模板文件的选择器 */
+  styleUrls: ['./heroes.component.css'] /* 私有组件的CSS样式表文件的位置 */
 })
 export class HeroesComponent implements OnInit {
+  //将heroes属性设置为heros,暴露数据,以供绑定
   heroes = HEROES;
+  selectedHero: Hero;
+
+  // 点击事件函数
+  onSelect(hero: Hero): void{
+    this.selectedHero = hero;
+  }
 
   constructor() {
     /* 构造函数 */
