@@ -1,3 +1,4 @@
+<!-- 显示选中英雄组件 -->
 <h2>My Heroes</h2>
 <ul class="heroes">
   <!--<li>是*ngFor的宿主元素
@@ -5,21 +6,12 @@
     <li *ngFor="let hero of heroes"
     [class.selected]="hero === selectedHero"
     (click)="onSelect(hero)">
-    <!-- onSelect添加点击事件函数 -->
+    <!-- onSelect添加点击事件函数，传入宿主绑定元素hero -->
     <!-- 通过数据复写（遍历）他的寄主元素，li为寄主元素 -->
-    <!-- [class.selected]="hero === selectedHero"为CSS类帮顶起 -->
+    <!-- [class.selected]="hero === selectedHero"为CSS类属性选择器 -->
         <span class="badge">{{hero.id}}</span> {{hero.name}}
     </li>
 </ul>
-<!-- 判断选中英雄是否为空，为空移出DOM -->
-<div *ngIf="selectedHero">
-  <h2>{{ selectedHero.name | uppercase }} Details</h2>
-  <div>
-    <span>id: </span>{{selectedHero.id}}</div>
-  <div>
-    <label>name:
-      <!--双向数据绑定语法-->
-      <input [(ngModel)]="selectedHero.name" placeholder="name">
-    </label>
-  </div>
-</div>
+<!-- 采用主从结构，将英雄的显示交给HeroDetail组件 -->
+<!-- 将selectedHero外部绑定给hero -->
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>

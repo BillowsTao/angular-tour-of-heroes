@@ -1,3 +1,13 @@
-<p>
-  hero-detail works!
-</p>
+<!-- 显示英雄界面 -->
+<!-- 判断英雄是否为空，为空移出DOM -->
+<div *ngIf="hero">
+  <h2>{{ hero.name | uppercase }} Details</h2>
+  <div>
+    <span>id: </span>{{hero.id}}</div>
+  <div>
+    <label>name:
+      <!-- 双向数据绑定语法 -->
+      <input [(ngModel)]="hero.name" placeholder="name">
+    </label>
+  </div>
+</div>
