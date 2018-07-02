@@ -11,7 +11,6 @@ import { HeroService } from '../hero.service';
 export class HeroesComponent implements OnInit {
   //将heroes属性设置为heros,暴露数据,以供绑定
   heroes: Hero[];   //声明英雄对象数组
-  selectedHero: Hero;
 
   //1.添加私有heroService属性，类型为HeroService
   //2.标记为HeroService的注入点
@@ -33,4 +32,21 @@ export class HeroesComponent implements OnInit {
         .subscribe(heroes => this.heroes = heroes);
   }
 
+  //添加英雄
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.heroService.addHero({ name } as Hero)
+      .subscribe(hero => {
+        this.heroes.push(hero);
+      });
+  }
+
+  //删除英雄
+  delete(hero: Hero): void {
+    /* filter函数过滤Array中的某些元素，返回剩下的元素
+    ** h => h !== hero 将不是当前hero的元素返回，h为当前的英雄变量 */
+    this.heroes = this.heroes.filter(h => h !== hero);
+    this.heroService.deleteHero(hero).subscribe();
+  }
 }

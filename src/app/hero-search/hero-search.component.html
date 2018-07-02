@@ -1,0 +1,15 @@
+<div id="search-component">
+  <h4>Hero Search</h4>
+  <!-- 添加keyup事件调用search()方法 -->
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+
+  <ul class="search-result">
+    <!-- heroes$是一个Observable，而不是数组 -->
+    <!-- async 表示 Angular 的 AsyncPipe ，通过 AsyncPipe 订阅-->
+    <li *ngFor="let hero of heroes$ | async">
+      <a routerLink="/detail/{{hero.id}}">
+        {{hero.name}}
+      </a>
+    </li>
+  </ul>
+</div>
