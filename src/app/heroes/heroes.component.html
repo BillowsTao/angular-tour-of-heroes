@@ -1,5 +1,16 @@
 <!-- 显示选中英雄组件 -->
 <h2>My Heroes</h2>
+
+<div>
+  <label>Hero name:
+    <input #heroName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(heroName.value); heroName.value=''">
+    add
+  </button>
+</div>
+
 <ul class="heroes">
   <!--<li>是*ngFor的宿主元素
     heroews是来自HeresComponent的队列-->
