@@ -21,4 +21,12 @@ export class HeroService {
     return of(HEROES);
   }
 
+  //通过id获取英雄
+  getHero(id: number): Observable<Hero> {
+    // TODO: send the message _after_ getching the hero
+    // 通过``提供模板字符串环境
+    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    return of(HEROES.find(hero => hero.id === id));
+  }
+
 }

@@ -13,11 +13,6 @@ export class HeroesComponent implements OnInit {
   heroes: Hero[];   //声明英雄对象数组
   selectedHero: Hero;
 
-  // 点击事件函数
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-  }
-
   //1.添加私有heroService属性，类型为HeroService
   //2.标记为HeroService的注入点
   constructor(private heroService: HeroService) {
