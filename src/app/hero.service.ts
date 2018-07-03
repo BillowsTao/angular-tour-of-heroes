@@ -5,7 +5,6 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { Hero } from './hero';
-import { HEROES } from './mock-heroes';
 
 /* 定义http请求中httpOptions常量 */
 const httpOptions = {
